@@ -257,6 +257,9 @@ INSTALLED_APPS = (
     #"mezzanine.mobile",
 )
 
+DUOSHUO_SECRET = '073e63866b1aca58b463a626136d4323'
+DUOSHUO_SHORT_NAME = 'vfind'
+
 # List of processors used by RequestContext to populate the context.
 # Each one should be a callable that takes the request object as its
 # only parameter and returns a dictionary to add to the context.
