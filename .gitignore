@@ -35,4 +35,5 @@ nosetests.xml
 .project
 .pydevproject
 dev.db
+local_settings_py
 
