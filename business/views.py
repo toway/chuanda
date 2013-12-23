@@ -14,7 +14,7 @@ from mezzanine.utils.models import get_user_model
 def blog_post_home(request, template="blog/blog_post_list.html"):
     settings.use_editable()
     templates = []
-    category = BlogCategory.objects.get(slug='ads')
+    category = BlogCategory.objects.get(slug='activity')
     blog_posts = BlogPost.objects.published(for_user=request.user)
     ads_posts = None
 

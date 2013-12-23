@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>四川大学深圳校友会</title>
+<meta name="description" content="本网站致力于为四川大学在深各界校友打造一个交流平台，愿各位校友身体健康，工作顺利！" />
+<meta name="keywords" content="四川大学深圳校友会" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<link href="css/dedecms.css" rel="stylesheet" media="screen" type="text/css" />
+<script language="javascript" type="text/javascript" src="js/dedeajax2.js"></script>
+<script src="js/jquery-1.8.0.min.js" language="javascript" type="text/javascript"></script>
+<script type="text/javascript" src="js/jquery.d.imagechange.min.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+var data=[
+	{title:'',desc:'',src:'images/banner1.jpg'},
+	{title:'',desc:'',src:'images/banner2.jpg'},
+	{title:'',desc:'',src:'images/banner3.jpg'},
+	{title:'',desc:'',src:'images/banner4.jpg'},
+	{title:'',desc:'',src:'images/banner5.jpg'}
+
+];
+
+	$(function(){
+		$("dl.tbox dt span.label a[_for]").mouseover(function(){
+			$(this).parents("span.label").children("a[_for]").removeClass("thisclass").parents("dl.tbox").children("dd").hide();
+			$(this).addClass("thisclass").blur();
+			$("#"+$(this).attr("_for")).show();
+		});
+		$("a[_for=uc_member]").mouseover();
+		
+			
+			/*校友活动风采动画*/
+		  $('#banner').d_imagechange({
+		data:data,
+		//animateStyle:'o'//默认值'o',可以不写	
+        animateStyle:'o', // 动画效果:'o':渐显 'x':横向滚动 'y':纵向滚动 'show':原地收缩伸展 'show-x':横向收缩伸展 'show-y':纵向收缩伸展' none':无动画
+		titleColor:'red',		
+		btnOpacity:0.7,
+		bgHeight:15,
+		btnOpacityHeight:20,
+		btnColor:'orange',
+		btnFontColor:'#fff',
+		bgColor:'#FFF',
+		width:329,
+		height:220,
+		playTime:2000,
+        animateTime:500,
+		btnTop:0,
+		btnLeft:50,
+		btnMargin:1,
+		btnWidth:25,
+		btn:true
+			
+	});
+	});
+	
+	function CheckLogin(){
+	  var taget_obj = document.getElementById('_userlogin');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/member/ajax_loginsta.php");
+	  DedeXHTTP = null;
+	}
+	
+	
+
+       
+-->
+</script>
+<style type="text/css">
+<!--
+.STYLE1 {color: #CC0000}
+-->
+</style>
+</head>
+<body>
+<div class="header">
+  </div>
+<!-- /header -->
+<div class="menu">
+  <ul> 
+          <li><a href='index.html'>首页</a></li>
+          <li><a href='/aanews/index.html'>校友会简介</a></li>
+          <li><a href='/scunews/index.html'>校友活动</a></li>
+          <li><a href='/qiye/index.html'>母校新闻</a></li>
+          <li><a href='/aaaction/index.html'>校友企业</a></li>
+          <li><a href='/wangshi/index.html'>最近活动公告</a></li>
+          <li><a href='/kanwu/index.html'>校友会俱乐部</a></li>
+          <li><a href='/forum'>校友招聘天地</a></li>
+        </ul>
+</div>
+<!--------/menu----->
+<!-- /header -->
+<div class="mainpage">
+<div class="left">
+<div class="title1"><span class="more"><a href="/oaaaction/">更多>></a></span>最新活动公告 </div>
+
+<div class="list1">
+
+星期天大家一起去爬梧桐山！
+
+</div>
+
+<div class="title1"><span class="more"><a href="/oaaaction/">更多>></a></span>兄弟校友会</div>
+<div class="list1">
+   <ul>
+   
+</ul>
+</div>
+
+<div class="title1"><span class="more"><a href="/plus/flink_add.php" target="_blank">申请连接</a></span>友情链接</div>
+<div class="list1">
+   <ul>
+   <li><a href='http://fortune178.com' target='_blank'>财富邦</a> </li><li><a href='http://www.hiyouedu.com' target='_blank'>华扬金融教育网</a> </li> 
+   </ul>
+</div>
+
+</div>
+<div class="main">
+<div class="left">
+<!--头条-->
+      <div class="title1"><span class="more"><a href="/aanews/">更多>></a></span>校友活动风采</div>
+      
+      <div class="list1"> 
+       <div id="banner" style="text-align:center; margin:0 auto;">
+    
+     </div>       
+      	<!--<div class="taotiao"><a href="/scunews/2009/0228/2.html">我校召开校党委全委会</a></div>
+        <p>2月25日下午，中共四川大学委员会全委会在江安校区江安办公楼301会议室举行。全体在校的校党委委员、两办有关人员参加了会议。会议由校党委书记杨泉明教授主持。 杨泉明书记在会议上表示，召开校党委全委会全面总结过去一年的工作，讨论审议新一年的工作是学...<a href="/scunews/2009/0228/2.html" class="STYLE1">[查看全文]</a></p>-->
+
+        <ul>
+        <li><span class="date">02-27</span><a href="active.html">川大校友深圳梧桐山之行</a></li>
+
+        </ul>
+        
+      </div>
+      <!-- /onenews -->
+    <div class="title1"><span class="more"><a href="newslist.html">更多>></a></span>母校新闻</div>
+    <div class="list1">
+<ul>
+   <li><span class="date">02-28</span><a href="news.html">谢和平校长会见国务院参事室主任、党组书记陈进玉一行</a></li>
+<li><span class="date">02-28</span><a href="/scunews/2009/0228/3.html">华西医院召开2008年工作总结暨2009年工作安排大会</a></li>
+<li><span class="date">02-28</span><a href="/scunews/2009/0228/2.html">我校召开校党委全委会</a></li>
+
+</ul>
+</div>
+
+<div class="title1"><span class="more"><a href="/forum/">更多>></a></span>校友留言</div>
+    <div class="list1">
+<ul>
+  <li>我们学校也有校友会网站了....</li>
+</ul>
+</div>
+      
+</div>
+<div class="right">
+<div class="title1"><span class="more"><a href="/aaaction/">更多>></a></span>校友会活动</div>
+<div class="list1">
+<ul>
+   
+</ul>
+</div>
+
+
+<div class="title1"><span class="more"><a href="/qiye/">更多>></a></span>校友企业天地</div>
+<div class="list1">
+   <ul>
+   <li><span class="date">03-28</span><a href="/kanwu/2009/0328/5.html">四川大学学报（第529期）</a></li>
+<li><span class="date">02-28</span><a href="/scunews/2009/0228/4.html">谢和平校长会见国务院参事室主</a></li>
+<li><span class="date">02-28</span><a href="/scunews/2009/0228/3.html">华西医院召开2008年工作总结暨</a></li>
+<li><span class="date">02-28</span><a href="/scunews/2009/0228/2.html">我校召开校党委全委会</a></li>
+<li><span class="date">02-27</span><a href="/aanews/2009/0227/1.html">校友会新闻-深圳校友会网站开</a></li>
+
+    
+   </ul>
+</div>
+
+<div class="title1"><span class="more"><a href="/wangshi/">更多>></a></span>校友招聘天地</div>
+<div class="list1">
+   <ul>
+   
+   </ul>
+</div>
+
+      <!-- /onenews -->
+<div class="title1"><span class="more"><a href="/kanwu/">更多>></a></span>校友会俱乐部</div>
+<div class="list1">
+   <ul>
+   
+   </ul>
+</div>
+
+</div>
+</div>
+
+</div>
+<!------/mainpage---->
+<div class="footer">
+Copyright &copy; 2002-2010 scuaasz.com 四川大学深圳校友会 版权所有<br />
+联系电话：1378888888  E_mail：scuaasz@163.com  QQ:1137938054<br />
+粤ICP备08705598
+  </div>
+
+<!-- /footer -->
+
+</body>
+</html>
