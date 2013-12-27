@@ -1,0 +1,22 @@
+{% load i18n future pages_tags %}
+
+{% if on_home %}
+首页
+{% else %}
+{% for page in page_branch %}
+
+    {% if not has_home and page.is_primary and forloop.first %}
+        <a href="{% url "home" %}">{% trans "Home" %}</a> > 
+    {% endif %}
+
+    {% if page.is_current_or_ascendant %}
+    {% if page.is_current %}
+    {{ page.title }}
+    {% else %}
+        <a href="{{ page.get_absolute_url }}">{{ page.title }}</a> > 
+    {% endif %}
+    {% if page.has_children %}{% page_menu page %}{% endif %}
+    {% endif %}
+
+{% endfor %}
+{% endif %}
