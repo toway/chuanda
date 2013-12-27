@@ -1,27 +1,27 @@
 <!--
-//xmlhttpå’Œxmldomå¯¹è±¡
+//xmlhttpºÍxmldom¶ÔÏó
 var DedeXHTTP = null;
 var DedeXDOM = null;
 var DedeContainer = null;
 var DedeShowError = false;
 var DedeShowWait = false;
 var DedeErrCon = "";
-var DedeErrDisplay = "ä¸‹è½½æ•°æ®å¤±è´¥";
-var DedeWaitDisplay = "æ­£åœ¨ä¸‹è½½æ•°æ®...";
+var DedeErrDisplay = "ÏÂÔØÊý¾ÝÊ§°Ü";
+var DedeWaitDisplay = "ÕýÔÚÏÂÔØÊý¾Ý...";
 
-//èŽ·å–æŒ‡å®šIDçš„å…ƒç´ 
+//»ñÈ¡Ö¸¶¨IDµÄÔªËØ
 
 function $DE(id) {
 	return document.getElementById(id);
 }
 
-//gcontainer æ˜¯ä¿å­˜ä¸‹è½½å®Œæˆçš„å†…å®¹çš„å®¹å™¨
-//mShowError æ˜¯å¦æç¤ºé”™è¯¯ä¿¡æ¯
-//DedeShowWait æ˜¯å¦æç¤ºç­‰å¾…ä¿¡æ¯
-//mErrCon æœåŠ¡å™¨è¿”å›žä»€ä¹ˆå­—ç¬¦ä¸²è§†ä¸ºé”™è¯¯
-//mErrDisplay å‘ç”Ÿé”™è¯¯æ—¶æ˜¾ç¤ºçš„ä¿¡æ¯
-//mWaitDisplay ç­‰å¾…æ—¶æç¤ºä¿¡æ¯
-//é»˜è®¤è°ƒç”¨ DedeAjax('divid',false,false,'','','')
+//gcontainer ÊÇ±£´æÏÂÔØÍê³ÉµÄÄÚÈÝµÄÈÝÆ÷
+//mShowError ÊÇ·ñÌáÊ¾´íÎóÐÅÏ¢
+//DedeShowWait ÊÇ·ñÌáÊ¾µÈ´ýÐÅÏ¢
+//mErrCon ·þÎñÆ÷·µ»ØÊ²Ã´×Ö·û´®ÊÓÎª´íÎó
+//mErrDisplay ·¢Éú´íÎóÊ±ÏÔÊ¾µÄÐÅÏ¢
+//mWaitDisplay µÈ´ýÊ±ÌáÊ¾ÐÅÏ¢
+//Ä¬ÈÏµ÷ÓÃ DedeAjax('divid',false,false,'','','')
 
 function DedeAjax(gcontainer,mShowError,mShowWait,mErrCon,mErrDisplay,mWaitDisplay)
 {
@@ -35,21 +35,21 @@ function DedeAjax(gcontainer,mShowError,mShowWait,mErrCon,mErrDisplay,mWaitDispl
 	if(mWaitDisplay!="") DedeWaitDisplay = mWaitDisplay;
 
 
-	//postæˆ–getå‘é€æ•°æ®çš„é”®å€¼å¯¹
+	//post»òget·¢ËÍÊý¾ÝµÄ¼üÖµ¶Ô
 	this.keys = Array();
 	this.values = Array();
 	this.keyCount = -1;
 
-	//httpè¯·æ±‚å¤´
+	//httpÇëÇóÍ·
 	this.rkeys = Array();
 	this.rvalues = Array();
 	this.rkeyCount = -1;
 
-	//è¯·æ±‚å¤´ç±»åž‹
+	//ÇëÇóÍ·ÀàÐÍ
 	this.rtype = 'text';
 
-	//åˆå§‹åŒ–xmlhttp
-	//IE6ã€IE5
+	//³õÊ¼»¯xmlhttp
+	//IE6¡¢IE5
 	if(window.ActiveXObject) {
 		try { DedeXHTTP = new ActiveXObject("Msxml2.XMLHTTP");} catch (e) { }
 		if (DedeXHTTP == null) try { DedeXHTTP = new ActiveXObject("Microsoft.XMLHTTP");} catch (e) { }
@@ -58,7 +58,7 @@ function DedeAjax(gcontainer,mShowError,mShowWait,mErrCon,mErrDisplay,mWaitDispl
 		DedeXHTTP = new XMLHttpRequest();
 	}
 
-	//å¢žåŠ ä¸€ä¸ªPOSTæˆ–GETé”®å€¼å¯¹
+	//Ôö¼ÓÒ»¸öPOST»òGET¼üÖµ¶Ô
 	this.AddKey = function(skey,svalue) {
 		this.keyCount++;
 		this.keys[this.keyCount] = skey;
@@ -66,7 +66,7 @@ function DedeAjax(gcontainer,mShowError,mShowWait,mErrCon,mErrDisplay,mWaitDispl
 		this.values[this.keyCount] = escape(svalue);
 	};
 
-	//å¢žåŠ ä¸€ä¸ªPOSTæˆ–GETé”®å€¼å¯¹
+	//Ôö¼ÓÒ»¸öPOST»òGET¼üÖµ¶Ô
 	this.AddKeyUtf8 = function(skey,svalue) {
 		this.keyCount++;
 		this.keys[this.keyCount] = skey;
@@ -74,14 +74,14 @@ function DedeAjax(gcontainer,mShowError,mShowWait,mErrCon,mErrDisplay,mWaitDispl
 		this.values[this.keyCount] = encodeURI(svalue);
 	};
 
-	//å¢žåŠ ä¸€ä¸ªHttpè¯·æ±‚å¤´é”®å€¼å¯¹
+	//Ôö¼ÓÒ»¸öHttpÇëÇóÍ·¼üÖµ¶Ô
 	this.AddHead = function(skey,svalue) {
 		this.rkeyCount++;
 		this.rkeys[this.rkeyCount] = skey;
 		this.rvalues[this.rkeyCount] = svalue;
 	};
 
-	//æ¸…é™¤å½“å‰å¯¹è±¡çš„å“ˆå¸Œè¡¨å‚æ•°
+	//Çå³ýµ±Ç°¶ÔÏóµÄ¹þÏ£±í²ÎÊý
 	this.ClearSet = function() {
 		this.keyCount = -1;
 		this.keys = Array();
@@ -93,7 +93,7 @@ function DedeAjax(gcontainer,mShowError,mShowWait,mErrCon,mErrDisplay,mWaitDispl
 
 
 	DedeXHTTP.onreadystatechange = function() {
-		//åœ¨IE6ä¸­ä¸ç®¡é˜»æ–­æˆ–å¼‚æ­¥æ¨¡å¼éƒ½ä¼šæ‰§è¡Œè¿™ä¸ªäº‹ä»¶çš„
+		//ÔÚIE6ÖÐ²»¹Ü×è¶Ï»òÒì²½Ä£Ê½¶¼»áÖ´ÐÐÕâ¸öÊÂ¼þµÄ
 		if(DedeXHTTP.readyState == 4){
 			if(DedeXHTTP.status == 200)
 			{
@@ -110,7 +110,7 @@ function DedeAjax(gcontainer,mShowError,mShowWait,mErrCon,mErrDisplay,mWaitDispl
 		else { if(DedeShowWait) DedeContainer.innerHTML = DedeWaitDisplay; }
 	};
 
-	//æ£€æµ‹é˜»æ–­æ¨¡å¼çš„çŠ¶æ€
+	//¼ì²â×è¶ÏÄ£Ê½µÄ×´Ì¬
 	this.BarrageStat = function() {
 		if(DedeXHTTP==null) return;
 		if(typeof(DedeXHTTP.status)!=undefined && DedeXHTTP.status == 200)
@@ -124,9 +124,9 @@ function DedeAjax(gcontainer,mShowError,mShowWait,mErrCon,mErrDisplay,mWaitDispl
 		}
 	};
 
-	//å‘é€httpè¯·æ±‚å¤´
+	//·¢ËÍhttpÇëÇóÍ·
 	this.SendHead = function() {
-		//å‘é€ç”¨æˆ·è‡ªè¡Œè®¾å®šçš„è¯·æ±‚å¤´
+		//·¢ËÍÓÃ»§×ÔÐÐÉè¶¨µÄÇëÇóÍ·
 		if(this.rkeyCount!=-1)
 		{ 
 			for(;i<=this.rkeyCount;i++)
@@ -141,14 +141,14 @@ function DedeAjax(gcontainer,mShowError,mShowWait,mErrCon,mErrDisplay,mWaitDispl
 	}
 };
 
-//ç”¨Postæ–¹å¼å‘é€æ•°æ®
+//ÓÃPost·½Ê½·¢ËÍÊý¾Ý
 this.SendPost = function(purl) {
 	var pdata = "";
 	var i=0;
 	this.state = 0;
 	DedeXHTTP.open("POST", purl, true);
 	this.SendHead();
-	//postæ•°æ®
+	//postÊý¾Ý
 	if(this.keyCount!=-1)
 	{
 		for(;i<=this.keyCount;i++)
@@ -160,12 +160,12 @@ this.SendPost = function(purl) {
 	DedeXHTTP.send(pdata);
 };
 
-//ç”¨GETæ–¹å¼å‘é€æ•°æ®
+//ÓÃGET·½Ê½·¢ËÍÊý¾Ý
 this.SendGet = function(purl) {
 	var gkey = "";
 	var i=0;
 	this.state = 0;
-	//getå‚æ•°
+	//get²ÎÊý
 	if(this.keyCount!=-1)
 	{ 
 		for(;i<=this.keyCount;i++)
@@ -181,12 +181,12 @@ this.SendGet = function(purl) {
 	DedeXHTTP.send(null);
 };
 
-//ç”¨GETæ–¹å¼å‘é€æ•°æ®ï¼Œé˜»å¡žæ¨¡å¼
+//ÓÃGET·½Ê½·¢ËÍÊý¾Ý£¬×èÈûÄ£Ê½
 this.SendGet2 = function(purl) {
 	var gkey = "";
 	var i=0;
 	this.state = 0;
-	//getå‚æ•°
+	//get²ÎÊý
 	if(this.keyCount!=-1)
 	{ 
 		for(;i<=this.keyCount;i++)
@@ -200,18 +200,18 @@ this.SendGet2 = function(purl) {
 	DedeXHTTP.open("GET", purl, false);
 	this.SendHead();
 	DedeXHTTP.send(null);
-	//firefoxä¸­ç›´æŽ¥æ£€æµ‹XHTTPçŠ¶æ€
+	//firefoxÖÐÖ±½Ó¼ì²âXHTTP×´Ì¬
 	this.BarrageStat();
 };
 
-//ç”¨Postæ–¹å¼å‘é€æ•°æ®
+//ÓÃPost·½Ê½·¢ËÍÊý¾Ý
 this.SendPost2 = function(purl) {
 	var pdata = "";
 	var i=0;
 	this.state = 0;
 	DedeXHTTP.open("POST", purl, false);
 	this.SendHead();
-	//postæ•°æ®
+	//postÊý¾Ý
 	if(this.keyCount!=-1)
 	{
 		for(;i<=this.keyCount;i++)
@@ -221,18 +221,18 @@ this.SendPost2 = function(purl) {
 		}
 	}
 	DedeXHTTP.send(pdata);
-	//firefoxä¸­ç›´æŽ¥æ£€æµ‹XHTTPçŠ¶æ€
+	//firefoxÖÐÖ±½Ó¼ì²âXHTTP×´Ì¬
 	this.BarrageStat();
 };
 
 
 } // End Class DedeAjax
 
-//åˆå§‹åŒ–xmldom
+//³õÊ¼»¯xmldom
 function InitXDom() {
 	if(DedeXDOM!=null) return;
 	var obj = null;
-	// Geckoã€Mozillaã€Firefox
+	// Gecko¡¢Mozilla¡¢Firefox
 	if (typeof(DOMParser) != "undefined") { 
 		var parser = new DOMParser();
 		obj = parser.parseFromString(xmlText, "text/xml");
@@ -247,7 +247,7 @@ function InitXDom() {
 
 
 
-//è¯»å†™cookieå‡½æ•°
+//¶ÁÐ´cookieº¯Êý
 function GetCookie(c_name)
 {
 	if (document.cookie.length > 0)
@@ -271,7 +271,7 @@ function SetCookie(c_name,value,expiredays)
 {
 	var exdate = new Date();
 	exdate.setDate(exdate.getDate() + expiredays);
-	document.cookie = c_name + "=" +escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString()); //ä½¿è®¾ç½®çš„æœ‰æ•ˆæ—¶é—´æ­£ç¡®ã€‚å¢žåŠ toGMTString()
+	document.cookie = c_name + "=" +escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString()); //Ê¹ÉèÖÃµÄÓÐÐ§Ê±¼äÕýÈ·¡£Ôö¼ÓtoGMTString()
 }
 
 -->

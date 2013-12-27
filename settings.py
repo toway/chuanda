@@ -242,7 +242,7 @@ INSTALLED_APPS = (
     "django.contrib.sites",
     "django.contrib.sitemaps",
     "django.contrib.staticfiles",
-    "mytheme1",
+    "scuaasz",
     "duoshuo",
     "business",
     "mezzanine.boot",

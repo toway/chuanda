@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
+{% load pages_tags mezzanine_tags i18n future staticfiles %}
+<head>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta property="wb:webmaster" content="04475b70d930f159" />
+<meta name="viewport" content="width=device-width">
+<meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+<meta name="description" content="{% block meta_description %}{% endblock %}">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+<link rel="shortcut icon" href="{% static "img/favicon.ico" %}">
+
+{% compress css %}
+<link rel="stylesheet" type="text/css" href='{% static "css/dedecms.css" %}'>
+{% if LANGUAGE_BIDI %}
+<link rel="stylesheet" href="{% static "css/rtl.css" %}">
+{% endif %}
+{% ifinstalled cartridge.shop %}
+<link rel="stylesheet" href="{% static "css/cartridge.css" %}">
+{% if LANGUAGE_BIDI %}
+<link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
+{% endif %}
+{% endifinstalled %}
+{% block extra_css %}{% endblock %}
+{% endcompress %}
+
+{% compress js %}
+<script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
+{% block extra_js %}{% endblock %}
+{% endcompress %}
+<!--[if lt IE 9]>
+<script src="{% static "js/html5shiv.js" %}"></script>
+<script src="{% static "js/respond.min.js" %}"></script>
+<![endif]-->
+{% block extra_head %}{% endblock %}
+
+</head>
+<body id="{% block body_id %}body{% endblock %}" class="articleview">
+
+<div class="header">
+</div>
+
+<!-- /header -->
+<div class="menu">
+    {% page_menu "pages/menus/head_menu.html" %}
+</div>
+<!-- /header -->
+
+<div class="mainpage">
+
+    <!-- begin side -->
+    <div class="left">
+        {% include "includes/left_panel.html" %}
+        {% block right_panel %}
+        {% endblock %}
+    </div>
+
+    <div class="main">
+
+    <ul class="position">
+        {% spaceless %}
+        {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
+        {% endspaceless %}
+    </ul>
+
+    {% block main %}{% endblock %}
+    </div>
+
+</div>
+
+<div class="footer">
+Copyright &copy; 2002-2010 scuaasz.com 四川大学深圳校友会 版权所有<br />
+联系电话：1378888888  E_mail：scuaasz@163.com  QQ:1137938054<br />
+粤ICP备08705598
+</div>
+<!-- footer -->
+
+{% include "includes/footer_scripts.html" %}
+
+</body>
+</html>
