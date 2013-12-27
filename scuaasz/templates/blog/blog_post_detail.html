@@ -12,41 +12,50 @@
 {{ blog_post.description }}
 {% endmetablock %}{% endblock %}
 
-{% block main %}
+{% block breadcrumb_menu %}
+{{ block.super }}
+{{ blog_post.title }}
+{% endblock %}
 
+{% block main %}
+<div class="list1">
 {% block blog_post_list_post_title %}
 {% editable blog_post.title %}
-<h1><a id="mainTitle" href='{{ blog_post.get_absolute_url }}'>{{ blog_post.title }}<a/></h1>
+ <div class="title">
+<h2>{{ blog_post.title }}</h2>
+</div>
 {% endeditable %}
 {% endblock %}
+
 {% block blog_post_detail_postedby %}
 {% editable blog_post.publish_date %}
+    <div class="info">
+    时间:{{ blog_post.publish_date|timesince }} |
     {% with blog_post.user as author %}
-    <a href="{% url "blog_post_list_author" author %}">{{ author.get_full_name|default:author.username }}</a>&nbsp;&nbsp;
+    作者:{{ author.get_full_name|default:author.username }}  |
     {% endwith %}
-	<span>{% blocktrans with sometime=blog_post.publish_date|timesince %}{{ sometime }} ago{% endblocktrans %}</span>
+    点击:<script src="/plus/count.php?view=yes&aid=4&mid=1" type='text/javascript' language="javascript"></script>次
+    </div>
 {% endeditable %}
 {% endblock %}
 
-<div class="contentPic">
+<div class="content">
+<p align="center">
 {% block blog_post_detail_featured_image %}
 {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
-<img src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 600 0 %}"/>
+<img src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 350 0 %}"/>
 {% endif %}
 {% endblock %}
-</div>
-
-{% if settings.COMMENTS_DISQUS_SHORTNAME %}
-{% include "generic/includes/disqus_counts.html" %}
-{% endif %}
+</p>
 
 {% block blog_post_detail_content %}
 {% editable blog_post.content %}
-<div class="newsContent" id="divCocntent">
+<div>
 	{{ blog_post.content|richtext_filters|safe }}
 </div>
 {% endeditable %}
 {% endblock %}
+</div>
 
 {% block blog_post_detail_keywords %}
 {% keywords_for blog_post as tags %}
@@ -62,24 +71,41 @@
 {% endif %}
 {% endblock %}
 
+<div class="dede_pages">
+    <ul class="pagelist">
+        
+    </ul>
+</div><!-- pages -->
+
+<div class="context">
 {% block blog_post_previous_next %}
 <ul class="pager">
 {% with blog_post.get_previous_by_publish_date as previous %}
 {% if previous %}
 <li class="previous">
-    <a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
+    上一篇：<a href="{{ previous.get_absolute_url }}">&larr; {{ previous }}</a>
+</li>
+{% else %}
+<li class="previous">
+ 上一篇：没有了
 </li>
 {% endif %}
 {% endwith %}
 {% with blog_post.get_next_by_publish_date as next %}
 {% if next %}
 <li class="next">
-    <a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
+    下一篇：<a href="{{ next.get_absolute_url }}">{{ next }} &rarr;</a>
+    </li>
+{% else %}
+<li class="next">
+ 下一篇：没有了
 </li>
 {% endif %}
 {% endwith %}
 </ul>
 {% endblock %}
+</div>
+</div><!-- list1 -->
 
 {% block blog_post_detail_related_posts %}
 {% if blog_post.related_posts.all %}
@@ -92,10 +118,6 @@
 </ul>
 </div>
 {% endif %}
-{% endblock %}
-
-{% block blog_post_detail_comments %}
-{% if blog_post.allow_comments %}{% comments_for blog_post %}{% endif %}
 {% endblock %}
 
 {% endblock %}
