@@ -36,4 +36,6 @@ nosetests.xml
 .pydevproject
 dev.db
 local_settings_py
+Session.vim
+
 

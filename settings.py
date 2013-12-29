@@ -78,6 +78,14 @@ ADMIN_MENU_ORDER = (
 #         {"blank": True, "default": 1},
 #     ),
 # )
+EXTRA_MODEL_FIELDS = (
+        (
+            "mezzanine.blog.models.BlogPost.recommand",
+            "BooleanField",
+            ("Recommand",),
+            {"blank": True, "default": False},
+        ),
+)
 
 # Setting to turn on featured images for blog posts. Defaults to False.
 #
@@ -256,10 +264,13 @@ INSTALLED_APPS = (
     "mezzanine.twitter",
     #"mezzanine.accounts",
     #"mezzanine.mobile",
+    "hitcount",
 )
 
-DUOSHUO_SECRET = '073e63866b1aca58b463a626136d4323'
 DUOSHUO_SHORT_NAME = 'vfind'
+HITCOUNT_KEEP_HIT_ACTIVE = {'days', 7}
+HITCOUNT_HITS_PER_IP_LIMIT = 0
+HITCOUNT_EXCLUDE_USER_GROUP = ('Editor', )
 
 # List of processors used by RequestContext to populate the context.
 # Each one should be a callable that takes the request object as its

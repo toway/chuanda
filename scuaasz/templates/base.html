@@ -52,18 +52,22 @@
 
     <!-- begin side -->
     <div class="left">
+        {% block left_panel %}
         {% include "includes/left_panel.html" %}
+        {% endblock %}
         {% block right_panel %}
         {% endblock %}
     </div>
 
     <div class="main">
-
+    
+    {% block position_menu %}
     <div class="position">
         {% spaceless %}
         {% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
         {% endspaceless %}
     </div>
+    {% endblock %}
 
     {% block main %}{% endblock %}
     </div>

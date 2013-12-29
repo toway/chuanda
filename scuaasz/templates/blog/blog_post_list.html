@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load i18n future mezzanine_tags blog_tags keyword_tags disqus_tags staticfiles duoshuo_tags %}
+{% load i18n future mezzanine_tags blog_tags keyword_tags disqus_tags staticfiles duoshuo_tags  hitcount_tags %}
 
 {% block meta_title %}{% if page %}{{ page.richtextpage.meta_title }}{% else %}{% trans "Blog" %}{% endif %}{% endblock %}
 
@@ -57,7 +57,7 @@
 {% editable blog_post.publish_date %}
         <span class="info1">
             日期：{{ blog_post.publish_date|timesince }}
-			点击：15
+			点击：{% get_hit_count for blog_post %}
         </span>
 {% endeditable %}
 {% endblock %}

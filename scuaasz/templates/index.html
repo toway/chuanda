@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+{% load pages_tags mezzanine_tags i18n future staticfiles sc_tags duoshuo_tags %}
+
+{% block meta_title %}四川大学深圳校友会{% endblock %}
+{% block title %}四川大学深圳校友会{% endblock %}
+
+{% block meta_description %}{% metablock %}
+本网站致力于为四川大学在深各界校友打造一个交流平台，愿各位校友身体健康，工作顺利！
+{% endmetablock %}{% endblock %}
+
+{% block extra_head %}
+<script src='{% static "js/dedeajax2.js" %}'></script>
+<script src='{% static "js/jquery.d.imagechange.min.js" %}'></script>
+<script language="javascript" type="text/javascript">
+<!--
+var data=[
+{title:'',desc:'',src:'{% static "images/banner1.jpg" %}'},
+{title:'',desc:'',src:'{% static "images/banner2.jpg" %}'},
+{title:'',desc:'',src:'{% static "images/banner3.jpg" %}'},
+{title:'',desc:'',src:'{% static "images/banner4.jpg" %}'},
+{title:'',desc:'',src:'{% static "images/banner4.jpg" %}'},
+];
+
+	$(function(){
+		$("dl.tbox dt span.label a[_for]").mouseover(function(){
+			$(this).parents("span.label").children("a[_for]").removeClass("thisclass").parents("dl.tbox").children("dd").hide();
+			$(this).addClass("thisclass").blur();
+			$("#"+$(this).attr("_for")).show();
+		});
+		$("a[_for=uc_member]").mouseover();
+			/*校友活动风采动画*/
+		  $('#banner').d_imagechange({
+		data:data,
+		//animateStyle:'o'//默认值'o',可以不写	
+        animateStyle:'o', // 动画效果:'o':渐显 'x':横向滚动 'y':纵向滚动 'show':原地收缩伸展 'show-x':横向收缩伸展 'show-y':纵向收缩伸展' none':无动画
+		titleColor:'red',		
+		btnOpacity:0.7,
+		bgHeight:15,
+		btnOpacityHeight:20,
+		btnColor:'orange',
+		btnFontColor:'#fff',
+		bgColor:'#FFF',
+		width:329,
+		height:220,
+		playTime:2000,
+        animateTime:500,
+		btnTop:0,
+		btnLeft:50,
+		btnMargin:1,
+		btnWidth:25,
+		btn:true
+			
+	});
+    });
+
+var duoshuoQuery = {short_name:"vfind"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+
+-->
+</script>
+{% endblock %}
+
+{% block position_menu %}
+{% endblock %}
+
+{% block left_panel %}
+<div class="left">
+<div class="title1"><span class="more"><a href="/category/notice/">更多>></a></span>最新活动公告 </div>
+<div class="list1">
+    <ul>
+{% sc_recent_notice as notices %}
+{% if notices %}
+{% for blog_post in notices %}
+<li>
+<a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+<p>{{ blog_post.description_from_content|safe }}</p>
+</li>
+{% endfor %}
+{% else %}
+    <li>暂时没有公告～
+    </li>
+{% endif %}
+    </ul>
+</div>
+
+<div class="title1"><span class="more"><a href="/oaaaction/">更多>></a></span>兄弟校友会</div>
+<div class="list1">
+   <ul>
+</ul>
+</div>
+
+<div class="title1"><span class="more"><a href="/plus/flink_add.php" target="_blank">申请连接</a></span>友情链接</div>
+<div class="list1">
+   <ul>
+   <li><a href='http://fortune178.com' target='_blank'>财富邦</a> </li><li><a href='http://www.hiyouedu.com' target='_blank'>华扬金融教育网</a> </li> 
+   </ul>
+</div>
+
+</div>
+{% endblock %}
+
+{% block main %}
+<div class="left">
+<!--头条-->
+      <div class="title1"><span class="more"><a href="/activity/">更多>></a></span>校友活动风采</div>
+      <div class="list1"> 
+       <div id="banner" style="text-align:center; margin:0 auto;">
+     </div>       
+     <ul>
+         {% if blog_posts %}
+         {% for blog_post in blog_posts %}
+         <li><span class="date">{{ blog_post.publish_date|timesince }}</span><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></li>
+         {% endfor %}
+         {% else %}
+         <li>没有活动</li>
+         {% endif %}
+        </ul>
+        
+      </div>
+      <!-- /onenews -->
+    <div class="title1"><span class="more"><a href="/category/news/">更多>></a></span>母校新闻</div>
+    <div class="list1">
+<ul>
+         {% if news %}
+         {% for blog_post in news %}
+         <li><span class="date">{{ blog_post.publish_date|timesince }}</span><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></li>
+         {% endfor %}
+         {% else %}
+         <li>没有活动</li>
+         {% endif %}
+</ul>
+</div>
+
+<div class="title1"><span class="more"><a href="message/">更多>></a></span>校友留言</div>
+    <div class="list1">
+    <ul class='ds-recent-comments' data-thread-key="chuanda_message" data-num-items='10' data-show-avatars="1" ></ul>
+</div>
+      
+</div>
+<div class="right">
+<div class="title1"><span class="more"><a href="/category/brief/">更多>></a></span>校友会简介</div>
+<div class="list1">
+<ul>
+         {% if brief %}
+         {% for blog_post in brief %}
+         <li><span class="date">{{ blog_post.publish_date|timesince }}</span><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></li>
+         {% endfor %}
+         {% else %}
+         <li>没有活动</li>
+         {% endif %}
+</ul>
+</div>
+
+
+<div class="title1"><span class="more"><a href="/category/company/">更多>></a></span>校友企业天地</div>
+<div class="list1">
+   <ul>
+         {% if coms %}
+         {% for blog_post in coms %}
+         <li><span class="date">{{ blog_post.publish_date|timesince }}</span><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></li>
+         {% endfor %}
+         {% else %}
+         <li>没有活动</li>
+         {% endif %}
+   </ul>
+</div>
+
+<div class="title1"><span class="more"><a href="/category/jobs/">更多>></a></span>校友招聘天地</div>
+<div class="list1">
+   <ul>
+         {% if jobs %}
+         {% for blog_post in jobs %}
+         <li><span class="date">{{ blog_post.publish_date|timesince }}</span><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></li>
+         {% endfor %}
+         {% else %}
+         <li>没有活动</li>
+         {% endif %}
+   </ul>
+</div>
+
+      <!-- /onenews -->
+<div class="title1"><span class="more"><a href="/category/club/">更多>></a></span>校友会俱乐部</div>
+<div class="list1">
+   <ul>
+         {% if clubs %}
+         {% for blog_post in clubs %}
+         <li><span class="date">{{ blog_post.publish_date|timesince }}</span><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></li>
+         {% endfor %}
+         {% else %}
+         <li>没有活动</li>
+         {% endif %}
+   </ul>
+</div>
+
+</div>
+</div>
+{% endblock %}

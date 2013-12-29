@@ -1,5 +1,5 @@
 {% extends "blog/blog_post_list.html" %}
-{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n future disqus_tags %}
+{% load mezzanine_tags comment_tags keyword_tags rating_tags i18n future disqus_tags hitcount_tags %}
 
 {% block meta_title %}{{ blog_post.meta_title }}{% endblock %}
 
@@ -11,6 +11,14 @@
 {% block meta_description %}{% metablock %}
 {{ blog_post.description }}
 {% endmetablock %}{% endblock %}
+
+{% block extra_head %}
+<script type='text/javascript'> <!--
+    $(document).ready(function() {
+            {% get_hit_count_javascript for blog_post %}
+            });
+--></script>
+{% endblock %}
 
 {% block breadcrumb_menu %}
 {{ block.super }}
@@ -34,7 +42,7 @@
     {% with blog_post.user as author %}
     作者:{{ author.get_full_name|default:author.username }}  |
     {% endwith %}
-    点击:<script src="/plus/count.php?view=yes&aid=4&mid=1" type='text/javascript' language="javascript"></script>次
+    点击: {% get_hit_count for blog_post %}次
     </div>
 {% endeditable %}
 {% endblock %}

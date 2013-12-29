@@ -4,7 +4,6 @@ from django.conf import settings
 from django.template import Library, Node
 
 DUOSHUO_SHORT_NAME = getattr(settings, "DUOSHUO_SHORT_NAME", None)
-DUOSHUO_SECRET = getattr(settings, "DUOSHUO_SECRET", None)
 
 register = Library()
 
