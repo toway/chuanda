@@ -13,17 +13,17 @@ db_port = "3306"
 
 DATABASES = {
     "default": {
-        # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
+        # Ends with "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
         "ENGINE": "django.db.backends.mysql",
         # DB name or path to database file if using sqlite3.
-        "NAME": db_name,
+        "NAME": "chuan",
         # Not used with sqlite3.
-        "USER": db_user,
+        "USER": "chuan",
         # Not used with sqlite3.
-        "PASSWORD": db_pass,
+        "PASSWORD": "chuan123",
         # Set to empty string for localhost. Not used with sqlite3.
-        "HOST": db_host,
+        "HOST": "yaha.v-find.com",
         # Set to empty string for default. Not used with sqlite3.
-        "PORT": db_port,
+        "PORT": "",
     }
 }

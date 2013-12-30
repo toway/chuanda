@@ -35,9 +35,9 @@
 
 {% block main %}
 
-{% for blog_post in blog_posts.object_list %}
 <div class="list2">
   <ul class="e2">
+{% for blog_post in blog_posts.object_list %}
       <li>
 {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
 {% block blog_post_list_post_featured_image %}
@@ -72,11 +72,12 @@
 </div>
 </li>
 {% endfor %}
+</ul>
+</div>
 
 {% pagination_for blog_posts %}
 
 {% endblock %}
 
 {% block right_panel %}
-{% include "blog/includes/filter_panel.html" %}
 {% endblock %}

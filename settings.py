@@ -22,7 +22,8 @@ SLUGIFY = 'uuslug.slugify'
 # Controls the ordering and grouping of the admin menu.
 #
 ADMIN_MENU_ORDER = (
-     ("Content", ("pages.Page", "blog.BlogPost", "blog.BlogCategory", 
+     #("Content", ("pages.Page", "blog.BlogPost", "blog.BlogCategory", 
+     ("Content", ("pages.Page", "blog.BlogPost",
         "generic.ThreadedComment", ("Media Library", "fb_browse"),)),
      ("Site", ("sites.Site", "redirects.Redirect", "conf.Setting")),
      ("Users", ("auth.User", "auth.Group",)),
