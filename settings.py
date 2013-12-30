@@ -34,8 +34,8 @@ ADMIN_MENU_ORDER = (
 #
 DASHBOARD_TAGS = (
      ("blog_tags.quick_blog", "mezzanine_tags.app_list"),
-     ("comment_tags.recent_comments",),
      ("mezzanine_tags.recent_actions",),
+     ("comment_tags.recent_comments",),
 )
 
 # A sequence of templates used by the ``page_menu`` template tag. Each
