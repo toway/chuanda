@@ -38,4 +38,4 @@ dev.db
 local_settings_py
 Session.vim
 static/media/*
-
+log_manager
