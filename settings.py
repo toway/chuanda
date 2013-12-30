@@ -309,6 +309,18 @@ MIDDLEWARE_CLASSES = (
     "mezzanine.core.middleware.FetchFromCacheMiddleware",
 )
 
+CACHES = {
+    "default":{
+        "BACKEND": 'redis_cache.RedisCache',
+        "LOCATION": "127.0.0.1:6379",
+        "OPTIONS": {
+            "DB":1,
+            "PASSWORD": "",
+            "PARSER_CLASS": "redis.connection.HiredisParser"
+        },
+    },
+}
+
 # Store these package names here as they may change in the future since
 # at the moment we are using custom forks of them.
 PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"

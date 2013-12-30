@@ -1,6 +1,5 @@
 {% load i18n future sc_tags %}
 
-<div class="left">
 <div class="title1"><span class="more"><a href="/category/notice">更多>></a></span>最新活动公告 </div>
 <div class="list1">
     <ul>
@@ -9,7 +8,7 @@
 {% for blog_post in notices %}
 <li>
 <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
-<p>{{ blog_post.description_from_content|safe }}</p>
+{{ blog_post.description_from_content|safe }}
 </li>
 {% endfor %}
 {% else %}
@@ -52,4 +51,3 @@
 {% endif %}
 </div>
 
-</div>
