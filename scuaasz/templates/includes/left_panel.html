@@ -8,7 +8,7 @@
 {% for blog_post in notices %}
 <li>
 <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
-{{ blog_post.description_from_content|safe }}
+{{ blog_post.description_from_content|safe|limit_chars:255}}
 </li>
 {% endfor %}
 {% else %}
@@ -26,7 +26,9 @@
 {% for blog_post in commands %}
 <li>
 <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
-<p>{{ blog_post.description_from_content|safe }}</p>
+<p>
+{{ blog_post.description_from_content|safe|limit_chars:128}}
+</p>
 </li>
 {% endfor %}
 {% else %}

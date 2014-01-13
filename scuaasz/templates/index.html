@@ -14,11 +14,9 @@
 <script language="javascript" type="text/javascript">
 <!--
 var data=[
-{title:'',desc:'',src:'{% static "images/banner1.jpg" %}'},
-{title:'',desc:'',src:'{% static "images/banner2.jpg" %}'},
-{title:'',desc:'',src:'{% static "images/banner3.jpg" %}'},
-{title:'',desc:'',src:'{% static "images/banner4.jpg" %}'},
-{title:'',desc:'',src:'{% static "images/banner4.jpg" %}'},
+{% for im in imgs %}
+{title:'',desc:'',src:'{{im}}'},
+{% endfor %}
 ];
 
 	$(function(){
@@ -53,14 +51,6 @@ var data=[
 	});
     });
 
-var duoshuoQuery = {short_name:"vfind"};
-(function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = 'http://static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
 
 -->
 </script>
@@ -78,7 +68,7 @@ var duoshuoQuery = {short_name:"vfind"};
 {% for blog_post in notices %}
 <li>
 <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
-{{ blog_post.description_from_content|safe }}
+{{ blog_post.description_from_content|safe|limit_chars:255}}
 </li>
 {% endfor %}
 {% else %}
@@ -91,13 +81,16 @@ var duoshuoQuery = {short_name:"vfind"};
 <div class="title1"><span class="more"><a href="/oaaaction/">更多>></a></span>兄弟校友会</div>
 <div class="list1">
    <ul>
+		<li><a href='http://www.toway.me' target='_blank'>突围俱乐部</a> </li>
 </ul>
 </div>
 
 <div class="title1"><span class="more"><a href="/plus/flink_add.php" target="_blank">申请连接</a></span>友情链接</div>
 <div class="list1">
-   <ul>
-   <li><a href='http://fortune178.com' target='_blank'>财富邦</a> </li><li><a href='http://www.hiyouedu.com' target='_blank'>华扬金融教育网</a> </li> 
+	<ul>
+		{% for li in ap_links %}
+		<li><a href='{{li.url}}' target='_blank'>{{li.name}}</a> </li>
+		{% endfor %}
    </ul>
 </div>
 
@@ -106,7 +99,7 @@ var duoshuoQuery = {short_name:"vfind"};
 {% block main %}
 <div class="left">
     <!--头条-->
-      <div class="title1"><span class="more"><a href="/activity/">更多>></a></span>校友活动风采</div>
+      <div class="title1"><span class="more"><a href="/sc/category/activity/">更多>></a></span>校友活动风采</div>
       <div class="list1"> 
         <div id="banner" style="text-align:center; margin:0 auto;">
         </div>       
@@ -137,7 +130,17 @@ var duoshuoQuery = {short_name:"vfind"};
 
 <div class="title1"><span class="more"><a href="message/">更多>></a></span>校友留言</div>
     <div class="list1">
-    <ul class='ds-recent-comments' data-num-items='8' data-show-title="0"></ul>
+		<ul class='ds-recent-comments' data-num-items='8' data-show-title="0"></ul>
+		<script type="text/javascript">
+var duoshuoQuery = {short_name:"scuaasz"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
 </div>
       
 </div>
@@ -147,8 +150,8 @@ var duoshuoQuery = {short_name:"vfind"};
 <div class="title1"><span class="more"><a href="/sc/category/brief/">更多>></a></span>校友会简介</div>
 <div class="list1">
 <ul>
-         {% if brief %}
-         {% for blog_post in brief %}
+         {% if briefs %}
+         {% for blog_post in briefs %}
          <li><span class="date">{{ blog_post.publish_date|timesince }}</span><a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a></li>
          {% endfor %}
          {% else %}

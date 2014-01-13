@@ -23,7 +23,7 @@ SLUGIFY = 'uuslug.slugify'
 #
 ADMIN_MENU_ORDER = (
      #("Content", ("pages.Page", "blog.BlogPost", "blog.BlogCategory", 
-     ("Content", ("pages.Page", "blog.BlogPost",
+     ("Content", ("blog.BlogPost",
         ("Media Library", "fb_browse"),)),
      ("Site", ("sites.Site", "redirects.Redirect", "conf.Setting")),
      ("Users", ("auth.User", "auth.Group",)),
@@ -121,10 +121,11 @@ ALLOWED_HOSTS = []
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = None
+TIME_ZONE = "Asia/Shanghai"
+#TIME_ZONE = 'UTC'
 
 # If you set this to True, Django will use timezone-aware datetimes.
-USE_TZ = True
+#USE_TZ = True
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
