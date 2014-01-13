@@ -68,7 +68,9 @@ var data=[
 {% for blog_post in notices %}
 <li>
 <a href="{{ blog_post.get_absolute_url }}">{{ blog_post.title }}</a>
+<p>
 {{ blog_post.description_from_content|safe|limit_chars:255}}
+</p>
 </li>
 {% endfor %}
 {% else %}
