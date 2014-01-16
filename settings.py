@@ -273,6 +273,7 @@ DUOSHUO_SHORT_NAME = 'vfind'
 HITCOUNT_KEEP_HIT_ACTIVE = {'days': 7}
 HITCOUNT_HITS_PER_IP_LIMIT = 0
 HITCOUNT_EXCLUDE_USER_GROUP = ('Editor', )
+#JQUERY_FILENAME = 'jquery-1.8.0.min.js'
 
 # List of processors used by RequestContext to populate the context.
 # Each one should be a callable that takes the request object as its
